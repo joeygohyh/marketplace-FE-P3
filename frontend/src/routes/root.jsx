@@ -35,7 +35,7 @@ export default function Root() {
                         {menuItems.map(item => {
                             return (
                                 <li key={item._id}>
-                                    <h2><Link to={`/menu-items/${item._id}`}>Name: {item.name}</Link></h2>
+                                    <h2><Link to={`/items/${item._id}`}>{item.name}</Link></h2>
                                     <p>Price: {item.price}</p>
                                     <p>Description: {item.description}</p>
                                     {item.image ? (
