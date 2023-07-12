@@ -19,10 +19,10 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        axios.post('http://localhost:3000/api/users/login', formData)
+        axios.post('http://localhost:3000/api/user/login', formData)
             .then(response => {
                 loginSuccess(response.data.token)
-                navigate('/users/profile')
+                navigate('/user/profile')
             })
             .catch(err => {
                 console.log(err)
