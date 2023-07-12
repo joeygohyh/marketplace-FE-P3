@@ -7,27 +7,28 @@ import { CookiesProvider } from "react-cookie";
 import AuthProvider from "./components/auth/AuthProvider";
 import Authenticated from './components/auth/AuthenticatedOnly';
 import Guest from './components/auth/GuestOnly';
-import Root from "./routes/root";
+// import Root from "./routes/root";
 import Register from "./components/RegistrationPage";
 import Login from "./components/LoginPage";
 import Profile from "./components/ProfilePage";
+import ItemListPage from "./components/ItemListPage";
 
 const router = createBrowserRouter([
   {
-    path: "/users/register",
+    path: "/user/register",
     element: <Guest component={Register} />,
   },
   {
-    path: "/users/login",
+    path: "/user/login",
     element: <Guest component={Login} />,
   },
   {
-    path: "/users/profile",
+    path: "/user/profile",
     element: <Authenticated component={Profile} />,
   },
   {
-    path: "/menu-items",
-    element: <Root />,
+    path: "/items",
+    element: <Guest component={ItemListPage} />,
   },
 ]);
 
