@@ -17,9 +17,9 @@ export default function Register() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3000/api/users/register", formData)
+      .post("http://localhost:3000/api/user/register", formData)
       .then((response) => {
-        navigate("/users/login");
+        navigate("/user/login");
       })
       .catch((err) => {
         console.log(err);
