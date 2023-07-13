@@ -7,6 +7,7 @@ const AUTH_TOKEN_NAME = 'userAuthToken'
 export const AuthContext = createContext({
     loginSuccess: (userToken) => {},
     logoutSuccess: () => {},
+    getUserToken: () => {},
     getUserFromToken: () => {},
   }
 )
@@ -30,10 +31,13 @@ export default function AuthProvider(props) {
         }
 
         return null
-    }
+    };
+    const getUserToken = () => {
+      return cookies.userAuthToken;
+    };
     
     return (
-        <AuthContext.Provider value={{loginSuccess, logoutSuccess, getUserFromToken}}>
+        <AuthContext.Provider value={{loginSuccess, logoutSuccess, getUserToken, getUserFromToken}}>
           {props.children}
         </AuthContext.Provider>
       )
