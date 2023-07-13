@@ -1,34 +1,33 @@
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { useState, useContext } from "react";
+import axios from "axios"
+import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../components/auth/AuthProvider";
+import { AuthContext } from '../components/auth/AuthProvider'
 
 export default function Login() {
-  const navigate = useNavigate();
-  const { loginSuccess } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const {loginSuccess} = useContext(AuthContext)
 
-  // create state to store form data
-  const [formData, setFormData] = useState({});
+    // create state to store form data
+    const [formData, setFormData] = useState({})
 
-  const handleFormChange = (e, fieldName) => {
-    console.log(e.target.value);
-    setFormData({ ...formData, [fieldName]: e.target.value });
-  };
+    const handleFormChange = (e, fieldName) => {
+        console.log(e.target.value)
+        setFormData({...formData, [fieldName]: e.target.value})
+    }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault()
 
-    axios
-      .post("http://localhost:3000/api/user/login", formData)
-      .then((response) => {
-        loginSuccess(response.data.token);
-        navigate("user/profile");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+        axios.post('http://localhost:3000/api/user/login', formData)
+            .then(response => {
+                loginSuccess(response.data.token)
+                navigate('/user/profile')
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
   return (
     <>
@@ -111,13 +110,7 @@ export default function Login() {
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{" "}
-            <Link
-              to="/register"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-            >
-              Sign up now
-            </Link>
+            Not a member? <Link to="/register" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign up now</Link>
           </p>
         </div>
       </div>
