@@ -27,6 +27,7 @@ export default function Profile() {
   }, [getUserToken]);
 
   return (
+    <>
     <div class="container mx-auto px-4 my-12 sm:w-1/2">
       <form>
         <div className="space-y-12">
@@ -117,5 +118,6 @@ export default function Profile() {
         </div>
       </form>
     </div>
+    </>
   );
 }
