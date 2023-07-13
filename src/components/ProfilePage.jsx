@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from '../components/auth/AuthProvider';
+import { AuthContext } from "../components/auth/AuthProvider";
 
 export default function Profile() {
   const { logoutSuccess, getUserToken } = useContext(AuthContext);
@@ -9,7 +9,6 @@ export default function Profile() {
   useEffect(() => {
     // Get the user token from the AuthContext
     const userToken = getUserToken();
-    
 
     if (userToken) {
       // Set the authorization header with the token
@@ -27,79 +26,96 @@ export default function Profile() {
     }
   }, [getUserToken]);
 
-    return (
-        <>
-      <div className="px-4 sm:px-0">
-        <h3 className="text-base font-semibold leading-7 text-gray-900">User Profile</h3>
-        <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details</p>
-      </div>
-      <div className="mt-6 border-t border-gray-100">
-        <dl className="divide-y divide-gray-100">
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Username</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> {userDetail.name} </dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Email</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{userDetail.email}</dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Email address</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">margotfoster@example.com</dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Salary expectation</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">$120,000</dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">About</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur
-              qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud
-              pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
-            </dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Attachments</dt>
-            <dd className="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              <ul role="list" className="divide-y divide-gray-100 rounded-md border border-gray-200">
-                <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                  <div className="flex w-0 flex-1 items-center">
-                   
-                    <div className="ml-4 flex min-w-0 flex-1 gap-2">
-                      <span className="truncate font-medium">resume_back_end_developer.pdf</span>
-                      <span className="flex-shrink-0 text-gray-400">2.4mb</span>
+  return (
+    <div class="container mx-auto px-4 my-12 sm:w-1/2">
+      <form>
+        <div className="space-y-12">
+          <div className="border-b border-gray-900/10 pb-12">
+            <h2 className="text-base font-semibold leading-7 text-gray-900">
+              Username
+            </h2>
+            <p className="mt-1 text-sm leading-6 text-gray-600">
+              {userDetail.name}
+            </p>
+
+            {/* <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <div className="col-span-full">
+                <label
+                  htmlFor="photo"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Photo
+                </label>
+                <div className="mt-2 flex items-center gap-x-3">
+                  <button
+                    type="button"
+                    className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                  >
+                    Change
+                  </button>
+                </div>
+              </div>
+
+              <div className="col-span-full">
+                <label
+                  htmlFor="cover-photo"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Cover photo
+                </label>
+                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                  <div className="text-center">
+                    <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                      <label
+                        htmlFor="file-upload"
+                        className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                      >
+                        <span>Upload a file</span>
+                        <input
+                          id="file-upload"
+                          name="file-upload"
+                          type="file"
+                          className="sr-only"
+                        />
+                      </label>
+                      <p className="pl-1">or drag and drop</p>
                     </div>
+                    <p className="text-xs leading-5 text-gray-600">
+                      PNG, JPG, GIF up to 10MB
+                    </p>
                   </div>
-                  <div className="ml-4 flex-shrink-0">
-                    <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                      Download
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                  <div className="flex w-0 flex-1 items-center">
-                   
-                    <div className="ml-4 flex min-w-0 flex-1 gap-2">
-                      <span className="truncate font-medium">coverletter_back_end_developer.pdf</span>
-                      <span className="flex-shrink-0 text-gray-400">4.5mb</span>
-                    </div>
-                  </div>
-                  <div className="ml-4 flex-shrink-0">
-                    <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                      Download
-                    </a>
-                    <button className="btn btn-danger" onClick={logoutSuccess}>Logout</button>
-                  </div>
-                </li>
-              </ul>
-            </dd>
+                </div>
+              </div>
+            </div> */}
           </div>
-        </dl>
-      </div>
-    </>
-            
-        
-    )
+
+          <div className="border-b border-gray-900/10 pb-12">
+            <h2 className="text-base font-semibold leading-7 text-gray-900">
+              Email
+            </h2>
+            <p className="mt-1 text-sm leading-6 text-gray-600">
+              {userDetail.email}
+            </p>
+          </div>
+
+          <div className="border-b border-gray-900/10 pb-12">
+            <h2 className="text-base font-semibold leading-7 text-gray-900">
+              Password
+            </h2>
+            <p className="mt-1 text-sm leading-6 text-gray-600">********</p>
+          </div>
+        </div>
+
+        <div className="mt-6 flex items-center justify-end gap-x-6">
+          <button
+            type="button"
+            className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            onClick={logoutSuccess}
+          >
+            Logout
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 }
- 
