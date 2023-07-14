@@ -2,45 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { CookiesProvider } from "react-cookie";
 import AuthProvider from "./components/auth/AuthProvider";
-import Authenticated from './components/auth/AuthenticatedOnly';
-import Guest from './components/auth/GuestOnly';
-// import Root from "./routes/root";
-import Register from "./components/RegistrationPage";
-import Login from "./components/LoginPage";
-import Profile from "./components/ProfilePage";
-import ItemListPage from "./components/ItemListPage";
-
-const router = createBrowserRouter([
-  {
-    path: "/user/register",
-    element: <Guest component={Register} />,
-  },
-  {
-    path: "/user/login",
-    element: <Guest component={Login} />,
-  },
-  {
-    path: "/user/profile",
-    element: <Authenticated component={Profile} />,
-  },
-  {
-    path: "/items",
-    element: <Guest component={ItemListPage} />,
-  },
-]);
+import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <CookiesProvider>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </CookiesProvider>
-  </React.StrictMode>
+  <BrowserRouter>
+    <React.StrictMode>
+      <CookiesProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </CookiesProvider>
+    </React.StrictMode>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
