@@ -9,7 +9,7 @@ function Authenticated(props) {
   const user = getUserFromToken();
 
   if (!user) {
-    return <Navigate to={"user/login"} />;
+    return <Navigate to={"/user/login"} />;
   }
 
   const now = DateTime.now().toUnixInteger();
