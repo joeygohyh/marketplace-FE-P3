@@ -10,7 +10,7 @@ export default function ItemListPage() {
     axios
       .get("http://localhost:3000/api/items")
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setItems(response.data);
       })
       .catch((err) => {
@@ -40,7 +40,7 @@ export default function ItemListPage() {
                   <div className="mt-4 flex justify-between">
                     <div>
                       <h3 className="text-sm text-gray-700">
-                        <Link to={`items/${item._id}`}> {item.name}</Link>
+                        <Link to={`/items/${item._id}`}> {item.name}</Link>
                       </h3>
                     </div>
                     <p className="text-sm font-medium text-gray-900">

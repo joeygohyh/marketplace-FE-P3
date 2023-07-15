@@ -8,6 +8,7 @@ import Login from "./components/LoginPage";
 import Profile from "./components/ProfilePage";
 import ItemListPage from "./components/ItemListPage";
 import Navigation from "./components/NavigationBar";
+import ItemPage from "./components/ItemPage";
 
 const router = [
   {
@@ -26,6 +27,10 @@ const router = [
     path: "/items",
     element: <Guest component={ItemListPage} />,
   },
+  {
+    path: "/items/:itemID",
+    element: <Guest component={ItemPage} />,
+  },
 ];
 function App() {
   return (
@@ -39,6 +44,7 @@ function App() {
           element={<Authenticated component={Profile} />}
         />
         <Route path="/items" element={<Guest component={ItemListPage} />} />
+        <Route path="/items/:itemID" element={<Guest component={ItemPage} />} />
       </Routes>
     </>
   );
