@@ -9,8 +9,14 @@ import Profile from "./components/ProfilePage";
 import ItemListPage from "./components/ItemListPage";
 import Navigation from "./components/NavigationBar";
 import ItemPage from "./components/ItemPage";
+import Cart from "./components/Cart";
+import Home from "./components/Home";
 
 const router = [
+  {
+    path: "/",
+    element: <Guest component={Home} />,
+  },
   {
     path: "/user/register",
     element: <Guest component={Register} />,
@@ -31,12 +37,18 @@ const router = [
     path: "/items/:itemID",
     element: <Guest component={ItemPage} />,
   },
+  {
+    path: "/cart",
+    element: <Authenticated component={Cart} />,
+  },
 ];
 function App() {
   return (
     <>
       <Navigation />
       <Routes>
+        <Route path="/" element={<Guest component={Home} />} />
+
         <Route path="/user/register" element={<Guest component={Register} />} />
         <Route path="/user/login" element={<Guest component={Login} />} />
         <Route
@@ -45,6 +57,7 @@ function App() {
         />
         <Route path="/items" element={<Guest component={ItemListPage} />} />
         <Route path="/items/:itemID" element={<Guest component={ItemPage} />} />
+        <Route path="/cart" element={<Authenticated component={Cart} />} />
       </Routes>
     </>
   );
