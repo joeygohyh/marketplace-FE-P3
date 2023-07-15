@@ -10,6 +10,7 @@ import ItemListPage from "./components/ItemListPage";
 import Navigation from "./components/NavigationBar";
 import ItemPage from "./components/ItemPage";
 import Cart from "./components/Cart";
+import PayButton from "./components/PayButton";
 import Home from "./components/Home";
 
 // const router = [
@@ -58,6 +59,7 @@ function App() {
         <Route path="/items" element={<Authenticated component={ItemListPage} />} />
         <Route path="/items/:itemID" element={<Guest component={ItemPage} />} />
         <Route path="/cart" element={<Authenticated component={Cart} />} />
+        <Route path="/payment/checkout" element={<Authenticated component={PayButton} />} />
       </Routes>
     </>
   );
