@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../components/auth/AuthProvider";
 
 export default function Profile() {
@@ -106,8 +107,16 @@ export default function Profile() {
               <p className="mt-1 text-sm leading-6 text-gray-600">********</p>
             </div>
           </div>
-
           <div className="mt-6 flex items-center justify-end gap-x-6">
+            <Link to="/user/update">
+              {" "}
+              <button
+                type="button"
+                className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              >
+                Edit profile
+              </button>
+            </Link>
             <button
               type="button"
               className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
