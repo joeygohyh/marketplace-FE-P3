@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AuthContext } from "../components/auth/AuthProvider";
 import { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function AddToCartButton() {
   const { getUserToken } = useContext(AuthContext);
@@ -12,6 +12,7 @@ export default function AddToCartButton() {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
 
   const handleAddToCart = () => {
+    
     axios
       .post(`http://localhost:3000/api/items/${itemID}/addToCart`, null, {
         headers: {
