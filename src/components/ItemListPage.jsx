@@ -1,22 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../components/auth/AuthProvider";
 
 export default function ItemListPage() {
+  const { getUserToken } = useContext(AuthContext);
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    // make api call
-    axios
-      .get("http://localhost:3000/api/items")
-      .then((response) => {
-        // console.log(response.data);
-        setItems(response.data);
-      })
-      .catch((err) => {
-        console.log("failed to fetch items");
-      });
-  }, []);
+    // Get the user token from the AuthContext
+    const userToken = getUserToken();
+
+    if (userToken) {
+      // Set the authorization header with the token
+      axios.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
+
+      // make api call
+      axios
+        .get("http://localhost:3000/api/items")
+        .then((response) => {
+          // console.log(response.data);
+          setItems(response.data);
+        })
+        .catch((err) => {
+          console.log("failed to fetch items");
+        });
+    }
+  }, [getUserToken]);
 
   return (
     <>
@@ -31,11 +41,13 @@ export default function ItemListPage() {
               return (
                 <div key={item._id} className="group relative">
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                      src={item.image}
-                      alt="thumbnail"
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
+                    <Link to={`/items/${item._id}`}>
+                      <img
+                        src={item.image}
+                        alt="thumbnail"
+                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                      />
+                    </Link>
                   </div>
                   <div className="mt-4 flex justify-between">
                     <div>
