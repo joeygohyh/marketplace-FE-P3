@@ -12,6 +12,7 @@ import ItemPage from "./components/ItemPage";
 import Cart from "./components/Cart";
 import PayButton from "./components/PayButton";
 import PaymentSuccess from "./components/PaymentSuccess";
+import PaymentFailed from "./components/PaymentFailed";
 import Home from "./components/Home";
 
 // const router = [
@@ -62,6 +63,7 @@ function App() {
         <Route path="/cart" element={<Authenticated component={Cart} />} />
         <Route path="/payment/checkout" element={<Authenticated component={PayButton} />} />
         <Route path="/payment/success" element={<PaymentSuccess />} />
+        <Route path="/payment/failed" element={<PaymentFailed />} />
       </Routes>
     </>
   );
