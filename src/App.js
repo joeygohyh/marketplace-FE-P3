@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Outlet } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import Authenticated from "./components/auth/AuthenticatedOnly";
 import Guest from "./components/auth/GuestOnly";
@@ -56,10 +56,20 @@ function App() {
           path="/user/profile"
           element={<Authenticated component={Profile} />}
         />
-        <Route path="/items" element={<Authenticated component={ItemListPage} />} />
-        <Route path="/items/:itemID" element={<Guest component={ItemPage} />} />
+        <Route
+          path="/items"
+          element={<Authenticated component={ItemListPage} />}
+        />
+        <Route
+          path="/items/:itemID"
+          element={<Authenticated component={ItemPage} />}
+        />
         <Route path="/cart" element={<Authenticated component={Cart} />} />
-        <Route path="/payment/checkout" element={<Authenticated component={PayButton} />} />
+
+        <Route
+          path="/payment/checkout"
+          element={<Authenticated component={PayButton} />}
+        />
       </Routes>
     </>
   );
