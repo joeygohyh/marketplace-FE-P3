@@ -56,10 +56,19 @@ function App() {
           path="/user/profile"
           element={<Authenticated component={Profile} />}
         />
-        <Route path="/items" element={<Authenticated component={ItemListPage} />} />
-        <Route path="/items/:itemID" element={<Guest component={ItemPage} />} />
+        <Route
+          path="/items"
+          element={<Authenticated component={ItemListPage} />}
+        />
+        <Route
+          path="/items/:itemID"
+          element={<Authenticated component={ItemPage} />}
+        />
         <Route path="/cart" element={<Authenticated component={Cart} />} />
-        <Route path="/payment/checkout" element={<Authenticated component={PayButton} />} />
+        <Route
+          path="/payment/checkout"
+          element={<Authenticated component={PayButton} />}
+        />
       </Routes>
     </>
   );

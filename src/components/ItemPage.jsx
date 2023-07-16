@@ -14,7 +14,7 @@ export default function ItemPage() {
     // get the item ID
     const { itemID } = useParams();
 
-     // use item ID to call backend API localhost:3000/api/menu-items/:itemID
+     // use item ID to call backend API localhost:3000/api/items/:itemID
     useEffect(() => {
       // make api call
       axios
@@ -105,17 +105,18 @@ export default function ItemPage() {
           </div>
 
           <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
-            {/* Description */}
-            <div>
-              {/* <h3 className="sr-only">Description</h3> */}
-              {/* <h3 className="text-sm font-medium text-gray-900">Description</h3> */}
+  {/* Description */}
+  <div>
+    {/* <h3 className="sr-only">Description</h3> */}
+    {/* <h3 className="text-sm font-medium text-gray-900">Description</h3> */}
 
-              <div className="space-y-6">
-                <p className="text-base text-gray-900">{item.description}</p>
-              </div>
-            </div>
-
-          </div>
+    <div className="space-y-6">
+      <p className="text-base text-gray-900" style={{ textAlign: 'justify' }}>
+        {item.description}
+      </p>
+    </div>
+  </div>
+</div>
         </div>
       </div>
     </div>
