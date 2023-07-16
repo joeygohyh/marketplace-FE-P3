@@ -6,6 +6,7 @@ import Guest from "./components/auth/GuestOnly";
 import Register from "./components/RegistrationPage";
 import Login from "./components/LoginPage";
 import Profile from "./components/ProfilePage";
+import EditProfile from "./components/EditProfile";
 import ItemListPage from "./components/ItemListPage";
 import Navigation from "./components/NavigationBar";
 import ItemPage from "./components/ItemPage";
@@ -54,10 +55,8 @@ function App() {
 
         <Route path="/user/register" element={<Guest component={Register} />} />
         <Route path="/user/login" element={<Guest component={Login} />} />
-        <Route
-          path="/user/profile"
-          element={<Authenticated component={Profile} />}
-        />
+        <Route path="/user/profile" element={<Authenticated component={Profile} />} />
+        <Route path="/user/update" element={<Authenticated component={EditProfile} />} />
         <Route path="/items" element={<Authenticated component={ItemListPage} />} />
         <Route path="/items/:itemID" element={<Guest component={ItemPage} />} />
         <Route path="/cart" element={<Authenticated component={Cart} />} />
