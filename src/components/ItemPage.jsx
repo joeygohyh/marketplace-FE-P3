@@ -4,7 +4,8 @@ import axios from "axios";
 // import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom"
 
-
+import AddToCartButton from "./AddToCartButton"
+import GoToCartButton from "./GoToCartButton"
 
 
 export default function ItemPage() {
@@ -91,9 +92,11 @@ export default function ItemPage() {
             <h2 className="sr-only">Product information</h2>
             <p className="text-3xl tracking-tight text-gray-900">${item.price}</p>
 
-         
+            <AddToCartButton itemID={itemID} />
+            <GoToCartButton  />
 
-            <form className="mt-10">
+
+            {/* <form className="mt-10">
             
               <button
                 type="submit"
@@ -101,7 +104,7 @@ export default function ItemPage() {
               >
                 Add to Cart
               </button>
-            </form>
+            </form> */}
           </div>
 
           <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
