@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Outlet } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import Authenticated from "./components/auth/AuthenticatedOnly";
 import Guest from "./components/auth/GuestOnly";
@@ -55,6 +55,7 @@ function App() {
 
         <Route path="/user/register" element={<Guest component={Register} />} />
         <Route path="/user/login" element={<Guest component={Login} />} />
+
         <Route path="/user/profile" element={<Authenticated component={Profile} />} />
         <Route path="/user/update" element={<Authenticated component={EditProfile} />} />
         <Route path="/items" element={<Authenticated component={ItemListPage} />} />
@@ -63,6 +64,7 @@ function App() {
         <Route path="/payment/checkout" element={<Authenticated component={PayButton} />} />
         <Route path="/payment/success" element={<PaymentSuccess />} />
         <Route path="/payment/failed" element={<PaymentFailed />} />
+
       </Routes>
     </>
   );

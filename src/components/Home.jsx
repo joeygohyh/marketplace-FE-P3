@@ -41,11 +41,10 @@ import { Link } from "react-router-dom";
           />
         </div> */}
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-4xl font-bold tracking-tight text-black sm:text-6xl">[placeholder]</h2>
-            <p className="mt-6 text-lg leading-8 text-black">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-              fugiat veniam occaecat fugiat aliqua.
+          <div className="mx-auto max-w-7xl lg:mx-0">
+            <h2 className="text-4xl font-bold tracking-tight text-black sm:text-6xl">[shop name]</h2>
+            <p className="mt-6 text-lg leading-8 text-black" style={{ textAlign: 'justify' }}>
+            Welcome to [shop name]! <br/> <br/>Immerse yourself in the extraordinary world of virtual reality where you can embark on thrilling adventures and unforgettable journeys. Discover an extensive collection of cutting-edge VR games that will transport you to new dimensions, from action-packed battles to mind-bending puzzles. Whether you're a seasoned gamer or new to the VR realm, our platform offers a diverse range of experiences for all ages and interests. Get ready to unleash your imagination and redefine your gaming reality with our unparalleled selection of VR game experiences. Start your adventure now and prepare to be amazed!
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
@@ -56,7 +55,7 @@ import { Link } from "react-router-dom";
 
               
             </div> 
-              {/* <div class="flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 max-w-md">
+              {/* <div className="flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 max-w-md">
     <Link to="/items">Go to Shop</Link>
 </div>
       */}
