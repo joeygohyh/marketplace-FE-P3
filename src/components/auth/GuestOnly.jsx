@@ -10,7 +10,7 @@ function Guest(props) {
 
     if (user) {
         return (
-            <Navigate to={'user/profile'} />
+            <Navigate to={'/items'} />
         )
     }
 
