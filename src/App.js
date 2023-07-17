@@ -51,20 +51,31 @@ function App() {
     <>
       <Navigation />
       <Routes>
-        <Route path="/" element={<Guest component={Home} />} />
+        <Route path="/" element={<Home />} />
 
         <Route path="/user/register" element={<Guest component={Register} />} />
         <Route path="/user/login" element={<Guest component={Login} />} />
 
-        <Route path="/user/profile" element={<Authenticated component={Profile} />} />
-        <Route path="/user/update" element={<Authenticated component={EditProfile} />} />
-        <Route path="/items" element={<Authenticated component={ItemListPage} />} />
+        <Route
+          path="/user/profile"
+          element={<Authenticated component={Profile} />}
+        />
+        <Route
+          path="/user/update"
+          element={<Authenticated component={EditProfile} />}
+        />
+        <Route
+          path="/items"
+          element={<Authenticated component={ItemListPage} />}
+        />
         <Route path="/items/:itemID" element={<Guest component={ItemPage} />} />
         <Route path="/cart" element={<Authenticated component={Cart} />} />
-        <Route path="/payment/checkout" element={<Authenticated component={PayButton} />} />
+        <Route
+          path="/payment/checkout"
+          element={<Authenticated component={PayButton} />}
+        />
         <Route path="/payment/success" element={<PaymentSuccess />} />
         <Route path="/payment/failed" element={<PaymentFailed />} />
-
       </Routes>
     </>
   );
