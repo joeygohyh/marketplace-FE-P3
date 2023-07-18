@@ -10,7 +10,7 @@ import ItemListPage from "./components/ItemListPage";
 import Navigation from "./components/NavigationBar";
 import ItemPage from "./components/ItemPage";
 import Cart from "./components/Cart";
-import PayButton from "./components/PayButton";
+import CheckoutButton from "./components/CheckoutButton";
 import PaymentSuccess from "./components/PaymentSuccess";
 import PaymentFailed from "./components/PaymentFailed";
 import Home from "./components/Home";
@@ -28,7 +28,7 @@ function App() {
         <Route path="/items" element={<Authenticated component={ItemListPage} />} />
         <Route path="/items/:itemID" element={<Authenticated component={ItemPage} />} />
         <Route path="/cart" element={<Authenticated component={Cart} />} />
-        <Route path="/payment/checkout" element={<Authenticated component={PayButton} />} />
+        <Route path="/payment/checkout" element={<Authenticated component={CheckoutButton} />} />
         <Route path="/payment/success" element={<PaymentSuccess />} />
         <Route path="/payment/failed" element={<PaymentFailed />} />
       </Routes>
