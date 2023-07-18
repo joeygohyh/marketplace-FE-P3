@@ -42,7 +42,7 @@ export default function ItemListPage() {
             {items.map((item) => {
               return (
                 <div key={item._id} className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-2xl bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                     <Link to={`/items/${item._id}`}>
                       <img
                         src={item.image}
@@ -51,13 +51,13 @@ export default function ItemListPage() {
                       />
                     </Link>
                   </div>
-                  <div className="mt-4 flex justify-between">
+                  <div className="mt-4 ml-4 flex justify-between">
                     <div>
                       <h3 className="text-sm text-gray-700">
                         <Link to={`/items/${item._id}`}> {item.name}</Link>
                       </h3>
                     </div>
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="mr-4 text-sm font-medium text-gray-900">
                       ${item.price}
                     </p>
                   </div>
