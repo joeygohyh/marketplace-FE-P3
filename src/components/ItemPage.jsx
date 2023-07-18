@@ -1,39 +1,44 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 // import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom"
+import { AuthContext } from "../components/auth/AuthProvider";
 
 import AddToCartButton from "./AddToCartButton"
 import GoToCartButton from "./GoToCartButton"
 
 
 export default function ItemPage() {
+  const { getUserToken } = useContext(AuthContext);
+  const [item, setItem] = useState(null);
+  const { itemID } = useParams();
+  
 
-    const [item, setItem] = useState(null);
+  useEffect(() => {
+    
+    const userToken = getUserToken();
 
-    // get the item ID
-    const { itemID } = useParams();
-
-     // use item ID to call backend API localhost:3000/api/items/:itemID
-    useEffect(() => {
-      // make api call
+    if (userToken) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
       axios
-      .get(`http://localhost:3000/api/items/${itemID}`)
+        .get(`http://localhost:3000/api/items/${itemID}`)
         .then((response) => {
-        //   console.log(response.data);
           setItem(response.data);
-          
         })
         .catch((err) => {
-          console.log("failed to fetch items");
-        //   console.log(item)
+          console.log("Failed to fetch items");
         });
-    }, [itemID]);
-  
-    if (!item) {
-        return <div>Loading...</div>;
-      }
+    }
+  }, [getUserToken, itemID]);
+
+  // if ( ! userToken ) {
+  //   return <div>You must be authenticated to view this page.</div>;
+  // }
+
+  if (!item) {
+    return <div>Loading...</div>;
+  }
 
   return (
       
@@ -77,7 +82,7 @@ export default function ItemPage() {
               src={item.image}
             //   alt={product.image[0].alt}
               className="h-full w-full object-cover object-center"
-            />
+            alt={item.name}/>
           </div>
         </div>
 
