@@ -136,7 +136,7 @@ export default function Example() {
                 <br />
                 Discover Limitless Realities
               </h2>
-              <p className="mt-6 text-lg leading-6 text-gray-300">
+              <p className="mt-6 text-lg leading-6 text-gray-300" style={{ textAlign: 'justify' }}>
                 Embark on thrilling VR adventures and discover a world of
                 limitless possibilities. Explore a vast collection of immersive
                 games, from action-packed battles to mind-bending puzzles.
@@ -145,12 +145,11 @@ export default function Example() {
                 amazed!
               </p>
               <div className="mt-9 mb-10 flex items-center justify-center gap-x-6 lg:justify-start">
-                <a
-                  href="#"
+                <Link to="user/login"
                   className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   Sign in to get started
-                </a>
+                </Link>
               </div>
             </div>
             <div className="relative ml-auto h-auto lg:mt-24">
