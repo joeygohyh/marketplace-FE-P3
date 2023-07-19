@@ -98,7 +98,7 @@ export default function ItemPage() {
             <p className="text-3xl tracking-tight text-gray-900">${item.price}</p>
 
             <AddToCartButton itemID={itemID} />
-            <GoToCartButton  />
+            
 
 
             {/* <form className="mt-10">
