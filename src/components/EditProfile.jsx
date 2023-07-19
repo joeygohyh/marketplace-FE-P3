@@ -5,24 +5,30 @@ import { useNavigate } from "react-router-dom";
 import validator from "validator";
 
 export default function EditProfile() {
+  // Get the user token & user info from the AuthContext
   const { getUserToken, getUserFromToken } = useContext(AuthContext);
   const userToken = getUserToken();
   const userFromToken = getUserFromToken();
 
+  // For navigate back to the user's profile
   const navigate = useNavigate();
 
+  // Create state to store form data
   const [formData, setFormData] = useState({
     name: userFromToken.name || "", // Set default value to an empty string
     email: userFromToken.email || "", // Set default value to an empty string
   });
 
+  // Create state to store form errors
   const [formErrors, setFormErrors] = useState({});
 
+  // Create state to store form validation errors
   const handleFormChange = (e, fieldName) => {
     setFormData({ ...formData, [fieldName]: e.target.value });
     setFormErrors({ ...formErrors, [fieldName]: "" });
   };
 
+  // handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -33,6 +39,7 @@ export default function EditProfile() {
       return;
     }
 
+    // Call the API to update the user details
     axios
       .put("http://localhost:3000/api/user/update", formData, {
         headers: {
@@ -47,9 +54,32 @@ export default function EditProfile() {
       });
   };
 
+  // Validate form
   const validateForm = (data) => {
     const errors = {};
-    // Validation logic...
+  
+    // Validate name field
+    if (data.name && !validator.isLength(data.name, { min: 3, max: 100 })) {
+      errors.name = "Username must be between 3 and 100 characters.";
+    }
+  
+    // Validate email field
+    if (data.email && !validator.isEmail(data.email)) {
+      errors.email = "Invalid email address.";
+    }
+  
+    // Validate password field
+    if (
+      data.password &&
+      !validator.matches(
+        data.password,
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+      )
+    ) {
+      errors.password =
+        "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character.";
+    }
+  
     return errors;
   };
 
