@@ -3,10 +3,13 @@ import { AuthContext } from "./auth/AuthProvider";
 import { useContext } from "react";
 
 export default function CheckoutButton() {
+  // Get the user token from the AuthContext
   const { getUserToken } = useContext(AuthContext);
   const userToken = getUserToken();
 
   const handleCheckout = () => {
+      
+    // Call the API to checkout go to stripe payment page
     axios
       .post("http://localhost:3000/api/payment/checkout", null, {
         headers: {
