@@ -67,9 +67,9 @@ export default function Navigation() {
           >
             Shop
           </Link>
-          <Link to="/cart" className="text-sm font-semibold leading-6 text-gray-900">
+          {/* <Link to="/cart" className="text-sm font-semibold leading-6 text-gray-900">
           🛒 Cart
-          </Link>
+          </Link> */}
 
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
@@ -158,12 +158,12 @@ export default function Navigation() {
                   Shop
                 </Link>
 
-                <Link
+                {/* <Link
                   to="/cart"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   🛒 Cart
-                </Link>
+                </Link> */}
 
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
