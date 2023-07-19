@@ -62,7 +62,7 @@ export default function Cart() {
 
 
   return (
-    <Transition.Root show={true} as={Fragment}>
+    <Transition.Root show={cart} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={handleCloseCart}>
         <Transition.Child
           as={Fragment}
