@@ -1,21 +1,58 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import validator from "validator";
 
 export default function Register() {
   const navigate = useNavigate();
 
-  // create state to store form data
+  // create state to store form data and error messages
   const [formData, setFormData] = useState({});
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
+  // handle form change
   const handleFormChange = (e, fieldName) => {
-    console.log(e.target.value);
     setFormData({ ...formData, [fieldName]: e.target.value });
   };
 
+  // handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const { name, email, password } = formData;
+
+    // Validate the form fields
+    if (!validator.isLength(name, { min: 3, max: 100 })) {
+      setNameError("Name must be between 3 and 100 characters.");
+      return;
+    } else {
+      setNameError("");
+    }
+
+    if (!validator.isEmail(email)) {
+      setEmailError("Invalid email address.");
+      return;
+    } else {
+      setEmailError("");
+    }
+
+    if (
+      !validator.matches(
+        password,
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+      )
+    ) {
+      setPasswordError(
+        "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character. Password must be at least 8 characters long."
+      );
+      return;
+    } else {
+      setPasswordError("");
+    }
+
+    // If the form data passes validation, make the POST request
     axios
       .post("http://localhost:3000/api/user/register", formData)
       .then((response) => {
@@ -28,7 +65,7 @@ export default function Register() {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-1 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign up for an account
@@ -60,9 +97,11 @@ export default function Register() {
                   onChange={(e) => {
                     handleFormChange(e, "name");
                   }}
-                  
                 />
               </div>
+              {nameError && (
+                <p className="text-red-500 text-xs mt-1">{nameError}</p>
+              )}
             </div>
 
             <div>
@@ -85,6 +124,9 @@ export default function Register() {
                   }}
                 />
               </div>
+              {emailError && (
+                <p className="text-red-500 text-xs mt-1">{emailError}</p>
+              )}
             </div>
 
             <div>
@@ -109,6 +151,9 @@ export default function Register() {
                   }}
                 />
               </div>
+              {passwordError && (
+                <p className="text-red-500 text-xs mt-1">{passwordError}</p>
+              )}
             </div>
 
             <div>

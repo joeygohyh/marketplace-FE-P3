@@ -148,7 +148,9 @@ export default function Example() {
                 <Link to="user/login"
                   className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
-                  Let's get started
+
+                  Get started now
+
                 </Link>
               </div>
             </div>

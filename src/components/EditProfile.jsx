@@ -1,24 +1,45 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../components/auth/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import validator from "validator";
 
 export default function EditProfile() {
-  const { getUserToken } = useContext(AuthContext);
+  // Get the user token & user info from the AuthContext
+  const { getUserToken, getUserFromToken } = useContext(AuthContext);
   const userToken = getUserToken();
-  const navigate = useNavigate();
-  
-  // create state to store form data
-  const [formData, setFormData] = useState({});
+  const userFromToken = getUserFromToken();
 
+  // For navigate back to the user's profile
+  const navigate = useNavigate();
+
+  // Create state to store form data
+  const [formData, setFormData] = useState({
+    name: userFromToken.name || "", // Set default value to an empty string
+    email: userFromToken.email || "", // Set default value to an empty string
+  });
+
+  // Create state to store form errors
+  const [formErrors, setFormErrors] = useState({});
+
+  // Create state to store form validation errors
   const handleFormChange = (e, fieldName) => {
-    console.log(e.target.value);
     setFormData({ ...formData, [fieldName]: e.target.value });
+    setFormErrors({ ...formErrors, [fieldName]: "" });
   };
 
+  // handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const validationErrors = validateForm(formData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setFormErrors(validationErrors);
+      return;
+    }
+
+    // Call the API to update the user details
     axios
       .put("http://localhost:3000/api/user/update", formData, {
         headers: {
@@ -31,6 +52,35 @@ export default function EditProfile() {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  // Validate form
+  const validateForm = (data) => {
+    const errors = {};
+  
+    // Validate name field
+    if (data.name && !validator.isLength(data.name, { min: 3, max: 100 })) {
+      errors.name = "Username must be between 3 and 100 characters.";
+    }
+  
+    // Validate email field
+    if (data.email && !validator.isEmail(data.email)) {
+      errors.email = "Invalid email address.";
+    }
+  
+    // Validate password field
+    if (
+      data.password &&
+      !validator.matches(
+        data.password,
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+      )
+    ) {
+      errors.password =
+        "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character.";
+    }
+  
+    return errors;
   };
 
   return (
@@ -60,13 +110,17 @@ export default function EditProfile() {
                 <input
                   id="name"
                   name="name"
-                  type="name"
+                  type="text"
                   autoComplete="name"
                   className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder={formData.name}
                   onChange={(e) => {
                     handleFormChange(e, "name");
                   }}
                 />
+                {formErrors.name && (
+                  <p className="text-red-500 text-sm">{formErrors.name}</p>
+                )}
               </div>
             </div>
 
@@ -84,10 +138,14 @@ export default function EditProfile() {
                   type="email"
                   autoComplete="email"
                   className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder={formData.email}
                   onChange={(e) => {
                     handleFormChange(e, "email");
                   }}
                 />
+                {formErrors.email && (
+                  <p className="text-red-500 text-sm">{formErrors.email}</p>
+                )}
               </div>
             </div>
 
@@ -107,10 +165,14 @@ export default function EditProfile() {
                   type="password"
                   autoComplete="current-password"
                   className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="********"
                   onChange={(e) => {
                     handleFormChange(e, "password");
                   }}
                 />
+                {formErrors.password && (
+                  <p className="text-red-500 text-sm">{formErrors.password}</p>
+                )}
               </div>
             </div>
 
