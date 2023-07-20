@@ -9,7 +9,7 @@ import EditProfile from "./components/EditProfile";
 import ItemListPage from "./components/ItemListPage";
 import Navigation from "./components/NavigationBar";
 import ItemPage from "./components/ItemPage";
-// import Cart from "./components/Cart";
+import ContactUs from "./components/ContactPage";
 import CheckoutButton from "./components/CheckoutButton";
 import PaymentSuccess from "./components/PaymentSuccess";
 import PaymentFailed from "./components/PaymentFailed";
@@ -39,7 +39,7 @@ function App() {
           path="/items/:itemID"
           element={<Authenticated component={ItemPage} />}
         />
-        {/* <Route path="/cart" element={<Authenticated component={Cart} />} /> */}
+        <Route path="/contact" element={<ContactUs />} />
         <Route
           path="/payment/checkout"
           element={<Authenticated component={CheckoutButton} />}

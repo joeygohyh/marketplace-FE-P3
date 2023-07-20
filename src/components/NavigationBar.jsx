@@ -67,9 +67,10 @@ export default function Navigation() {
           >
             Shop
           </Link>
-          {/* <Link to="/cart" className="text-sm font-semibold leading-6 text-gray-900">
-          🛒 Cart
-          </Link> */}
+        
+          <Link to="/contact" className="text-sm font-semibold leading-6 text-gray-900">
+          Contact Us
+          </Link>
 
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
@@ -79,6 +80,8 @@ export default function Navigation() {
                 aria-hidden="true"
               />
             </Popover.Button>
+
+            
 
             <Transition
               as={Fragment}
@@ -117,9 +120,14 @@ export default function Navigation() {
                 </div>
               </Popover.Panel>
             </Transition>
+
+            
           </Popover>
         </Popover.Group>
+
         <div className="hidden lg:flex lg:flex-1 lg:justify-end"></div>
+
+         
       </nav>
       <Dialog
         as="div"
@@ -158,12 +166,12 @@ export default function Navigation() {
                   Shop
                 </Link>
 
-                {/* <Link
+                <Link
                   to="/cart"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  🛒 Cart
-                </Link> */}
+                  Contact Us
+                </Link>
 
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
@@ -193,6 +201,8 @@ export default function Navigation() {
                     </>
                   )}
                 </Disclosure>
+
+                 
               </div>
             </div>
           </div>
