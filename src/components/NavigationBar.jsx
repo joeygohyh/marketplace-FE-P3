@@ -67,9 +67,9 @@ export default function Navigation() {
           >
             Shop
           </Link>
-          {/* <Link to="/cart" className="text-sm font-semibold leading-6 text-gray-900">
-          🛒 Cart
-          </Link> */}
+          <Link to="/ContactUs" className="text-sm font-semibold leading-6 text-gray-900">
+          Contact us
+          </Link>
 
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
