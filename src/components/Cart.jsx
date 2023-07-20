@@ -3,12 +3,13 @@ import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import axios from "axios";
 import { AuthContext } from "../components/auth/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import CartItem from './CartItem';
 import CheckoutButton from './CheckoutButton';
 
 
 export default function Cart() {
+  const { itemID } = useParams();
   const [cart, setCart] = useState(true)
   const { getUserToken } = useContext(AuthContext);
   const [userDetails, setUserDetails] = useState([]);
@@ -18,7 +19,7 @@ export default function Cart() {
     // Get the user token from the AuthContext
     const userToken = getUserToken();
 
-    if (userToken) {
+    if (userToken) {  
       // Set the authorization header with the token
       axios.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
 
@@ -55,11 +56,14 @@ export default function Cart() {
         console.log('Failed to remove item from cart', error);
       });
   }
-  
+  function handleCloseCart() {
+    setCart(false);
+  }
+
 
   return (
     <Transition.Root show={cart} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setCart}>
+      <Dialog as="div" className="relative z-10" onClose={handleCloseCart}>
         <Transition.Child
           as={Fragment}
           enter="ease-in-out duration-500"
