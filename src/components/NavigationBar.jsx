@@ -16,13 +16,13 @@ import {
 const products = [
   {
     name: "Profile",
-    description: "Get a better understanding of your traffic",
+    description: "Edit your username, email and password",
     href: "/user/profile",
     icon: ChartPieIcon,
   },
   {
     name: "Purchase History",
-    description: "Speak directly to your customers",
+    description: "View your purchase history",
     href: "#",
     icon: SquaresPlusIcon,
   },
