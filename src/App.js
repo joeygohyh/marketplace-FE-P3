@@ -14,6 +14,8 @@ import CheckoutButton from "./components/CheckoutButton";
 import PaymentSuccess from "./components/PaymentSuccess";
 import PaymentFailed from "./components/PaymentFailed";
 import Home from "./components/Home";
+import ContactUs from "./components/ContactUs";
+import EmailSent from "./components/EmailSent";
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
         />
         <Route path="/payment/success" element={<PaymentSuccess />} />
         <Route path="/payment/failed" element={<PaymentFailed />} />
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/contactsuccess" element={<EmailSent />} />
       </Routes>
     </>
   );

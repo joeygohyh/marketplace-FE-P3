@@ -16,13 +16,13 @@ import {
 const products = [
   {
     name: "Profile",
-    description: "Get a better understanding of your traffic",
+    description: "Edit your username, email and password",
     href: "/user/profile",
     icon: ChartPieIcon,
   },
   {
     name: "Purchase History",
-    description: "Speak directly to your customers",
+    description: "View your purchase history",
     href: "#",
     icon: SquaresPlusIcon,
   },
@@ -67,9 +67,9 @@ export default function Navigation() {
           >
             Shop
           </Link>
-          {/* <Link to="/cart" className="text-sm font-semibold leading-6 text-gray-900">
-          🛒 Cart
-          </Link> */}
+          <Link to="/ContactUs" className="text-sm font-semibold leading-6 text-gray-900">
+          Contact us
+          </Link>
 
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
