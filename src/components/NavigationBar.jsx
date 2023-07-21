@@ -23,7 +23,7 @@ const products = [
   {
     name: "Purchase History",
     description: "View your purchase history",
-    href: "#",
+    href: "/user/history",
     icon: SquaresPlusIcon,
   },
 ];
