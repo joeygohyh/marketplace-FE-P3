@@ -16,6 +16,7 @@ import PaymentFailed from "./components/PaymentFailed";
 import Home from "./components/Home";
 import ContactUs from "./components/ContactUs";
 import EmailSent from "./components/EmailSent";
+import History from "./components/History";
 
 function App() {
   return (
@@ -32,6 +33,10 @@ function App() {
         <Route
           path="/user/update"
           element={<Authenticated component={EditProfile} />}
+        />
+        <Route
+          path="/user/history"
+          element={<Authenticated component={History} />}
         />
         <Route
           path="/items"

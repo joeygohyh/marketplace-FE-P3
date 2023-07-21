@@ -41,7 +41,7 @@ export default function EditProfile() {
 
     // Call the API to update the user details
     axios
-      .put("http://localhost:3000/api/user/update", formData, {
+      .put(`${process.env.REACT_APP_SERVER_URL}/user/update`, formData, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },

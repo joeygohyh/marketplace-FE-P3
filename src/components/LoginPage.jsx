@@ -24,7 +24,7 @@ export default function Login() {
     setErrorMessage("");
 
     axios
-      .post("http://localhost:3000/api/user/login", formData)
+      .post(`${process.env.REACT_APP_SERVER_URL}/user/login`, formData)
       .then((response) => {
         loginSuccess(response.data.token);
         navigate("/user/profile");
@@ -85,12 +85,12 @@ export default function Login() {
                   Password
                 </label>
                 <div className="text-sm">
-                  <a
+                  {/* <a
                     href="#"
                     className="font-semibold text-indigo-600 hover:text-indigo-500"
                   >
                     Forgot password?
-                  </a>
+                  </a> */}
                 </div>
               </div>
               <div className="mt-2">

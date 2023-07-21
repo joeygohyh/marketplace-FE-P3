@@ -14,7 +14,7 @@ export default function AddToCartButton({ itemID, showCartOverlay }) {
   const handleAddToCart = () => {
     
     axios
-      .post(`http://localhost:3000/api/items/${itemID}/addToCart`, null, {
+      .post(`${process.env.REACT_APP_SERVER_URL}/items/${itemID}/addToCart`, null, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },

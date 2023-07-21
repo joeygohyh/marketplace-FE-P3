@@ -11,7 +11,7 @@ export default function CheckoutButton() {
       
     // Call the API to checkout go to stripe payment page
     axios
-      .post("http://localhost:3000/api/payment/checkout", null, {
+      .post(`${process.env.REACT_APP_SERVER_URL}/payment/checkout`, null, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },

@@ -23,7 +23,7 @@ export default function ItemPage() {
     if (userToken) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
       axios
-        .get(`http://localhost:3000/api/items/${itemID}`)
+        .get(`${process.env.REACT_APP_SERVER_URL}/items/${itemID}`)
         .then((response) => {
           setItem(response.data);
         })

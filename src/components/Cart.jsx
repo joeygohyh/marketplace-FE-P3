@@ -25,7 +25,7 @@ export default function Cart() {
 
       // Make the API call
       axios
-        .get("http://localhost:3000/api/cart")
+        .get(`${process.env.REACT_APP_SERVER_URL}/cart`)
         .then((response) => {
           setUserDetails(response.data);
           // console.log(response.data)
@@ -47,7 +47,7 @@ export default function Cart() {
   function handleRemoveItem(itemID) {
     // Call the API to remove the item from the cart
     axios
-      .delete(`http://localhost:3000/api/cart/removeFromCart/${itemID}`)
+      .delete(`${process.env.REACT_APP_SERVER_URL}/cart/removeFromCart/${itemID}`)
       .then((response) => {
         // Remove the item from the frontend by updating the userDetails state
         setUserDetails((prevUserDetails) => prevUserDetails.filter((item) => item.item !== itemID));
