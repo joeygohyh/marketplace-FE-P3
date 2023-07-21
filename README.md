@@ -42,6 +42,9 @@ Welcome to the VR Experience Marketplace! This is a user-friendly and secure onl
 
 ### Possible future enhancements
 
+- Purchase History
+- Customer Reviews
+
 ## Live Site
 
 https://the-vr-experience-marketplace.onrender.com/
