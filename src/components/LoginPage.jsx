@@ -24,7 +24,7 @@ export default function Login() {
     setErrorMessage("");
 
     axios
-      .post("http://localhost:3000/api/user/login", formData)
+      .post(`${process.env.REACT_APP_SERVER_URL}/user/login`, formData)
       .then((response) => {
         loginSuccess(response.data.token);
         navigate("/user/profile");

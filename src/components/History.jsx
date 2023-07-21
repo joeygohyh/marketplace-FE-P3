@@ -17,7 +17,7 @@ export default function Profile() {
 
       // Make the API call
       axios
-        .get("http://localhost:3000/api/user/profile")
+        .get(`${process.env.REACT_APP_SERVER_URL}/user/profile`)
         .then((response) => {
           setUserDetails(response.data);
         })

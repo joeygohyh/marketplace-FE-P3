@@ -17,7 +17,7 @@ export default function ItemListPage() {
 
       // make api call
       axios
-        .get("http://localhost:3000/api/items")
+        .get(`${process.env.REACT_APP_SERVER_URL}/items`)
         .then((response) => {
           // console.log(response.data);
           setItems(response.data);

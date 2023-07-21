@@ -54,7 +54,7 @@ export default function Register() {
 
     // If the form data passes validation, make the POST request
     axios
-      .post("http://localhost:3000/api/user/register", formData)
+      .post(`${process.env.REACT_APP_SERVER_URL}/user/register`, formData)
       .then((response) => {
         navigate("/user/login");
       })
