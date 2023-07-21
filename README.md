@@ -52,7 +52,7 @@ https://the-vr-experience-marketplace.onrender.com/
 ## Repository
 
 The source code is available on GitHub:
-FE - https://github.com/joeygohyh/marketplace-frontend
+FE - https://github.com/joeygohyh/marketplace-frontend <br/>
 BE - https://github.com/XinyingPeh/marketplace-backend
 
 ## Authors
