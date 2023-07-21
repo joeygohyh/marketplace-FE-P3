@@ -77,7 +77,7 @@
 //   }
 import { Link } from "react-router-dom";
 
-export default function Example() {
+export default function Home() {
   // return (
   //   <div className="relative isolate overflow-hidden py-8 sm:py-8">
   //     <div className="mx-auto max-w-7xl px-6 lg:px-8">
