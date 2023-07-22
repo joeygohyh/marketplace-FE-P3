@@ -16,8 +16,6 @@ Welcome to the VR Experience Marketplace! This is a user-friendly and secure onl
 3. Tailwind CSS: open source CSS framework that provide a flexible approach to styling web applications.
 4. Stripe API: Stripe API is used to create a robust and secure e-commerce platform, providing a reliable and efficient payment infrastructure for the application.
 
-## Approach
-
 ## Features
 
 1. Detailed Product Information
