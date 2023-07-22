@@ -3,9 +3,6 @@ import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useNavigate } from "react-router-dom";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function ContactUs() {
   const form = useRef();
@@ -50,8 +47,6 @@ export default function ContactUs() {
       </div>
 
       <form
-        action="#"
-        method="POST"
         className="mx-auto mt-16 max-w-xl sm:mt-10"
         ref={form}
         onSubmit={sendEmail}
