@@ -5,15 +5,14 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function ContactUs() {
+  
+  // define a reference to the form
   const form = useRef();
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  // Initialize useNavigate hook
+  const navigate = useNavigate(); 
 
   const sendEmail = (e) => {
     e.preventDefault();
-
-    // console.log('Service ID:', process.env.REACT_APP_YOUR_SERVICE_ID);
-    // console.log('Template ID:', process.env.REACT_APP_YOUR_TEMPLATE_ID);
-    // console.log('Public Key:', process.env.REACT_APP_YOUR_PUBLIC_KEY);
 
     emailjs
       .sendForm(
