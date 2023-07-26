@@ -50,8 +50,6 @@ export default function ContactUs() {
       </div>
 
       <form
-        action="#"
-        method="POST"
         className="mx-auto mt-16 max-w-xl sm:mt-10"
         ref={form}
         onSubmit={sendEmail}
