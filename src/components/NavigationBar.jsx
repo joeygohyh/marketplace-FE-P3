@@ -67,7 +67,7 @@ export default function Navigation() {
           >
             Shop
           </Link>
-          <Link to="/ContactUs" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link to="/contactus" className="text-sm font-semibold leading-6 text-gray-900">
           Contact us
           </Link>
 
