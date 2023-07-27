@@ -3,20 +3,16 @@ import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useNavigate } from "react-router-dom";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function ContactUs() {
+  
+  // define a reference to the form
   const form = useRef();
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  // Initialize useNavigate hook
+  const navigate = useNavigate(); 
 
   const sendEmail = (e) => {
     e.preventDefault();
-
-    // console.log('Service ID:', process.env.REACT_APP_YOUR_SERVICE_ID);
-    // console.log('Template ID:', process.env.REACT_APP_YOUR_TEMPLATE_ID);
-    // console.log('Public Key:', process.env.REACT_APP_YOUR_PUBLIC_KEY);
 
     emailjs
       .sendForm(
@@ -45,7 +41,7 @@ export default function ContactUs() {
           Contact us
         </h2>
         <p className="mt-2 text-lg leading-8 text-gray-600">
-          Let us know how we can help you
+          We'd love to hear from you
         </p>
       </div>
 
