@@ -45,7 +45,7 @@ Welcome to the VR Experience Marketplace! This is a user-friendly and secure onl
 
 ## Live Site
 
-https://the-vr-experience-marketplace.onrender.com/
+https://vr-marketplace.vercel.app
 
 ## Repository
 
